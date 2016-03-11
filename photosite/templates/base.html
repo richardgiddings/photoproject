@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/photosite/style.css" type="text/css" media="screen" />
+    <title>{% block title %}Photosite Application{% endblock %}</title>
+</head>
+
+<body s>
+	<div id = "page">
+		<header>
+			{% block header %}{% endblock %}
+			<nav>{% block navigation %}{% endblock %}</nav>
+		</header>
+		<section class="photos">
+	    	<article>{% block content %}{% endblock %}</article>
+		</section>
+		<footer>{% block footer %}{% endblock %}</footer>
+	</div>
+</body>
+</html>
+

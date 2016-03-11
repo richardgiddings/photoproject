@@ -1,0 +1,107 @@
+
+h1 {
+	padding:10px;
+	margin: 5px;
+	
+	font-family: Gill Sans, Verdana;
+	font-size: 31px;
+	line-height: 34px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+footer {
+	padding:10px;
+	margin: 5px;
+	font-family: Gill Sans, Verdana;
+}
+
+/*
+	A dividing line
+*/
+
+hr {
+	border: none;
+	height: 1px;
+	background-color: black;
+	margin:0px 5px 0px 5px;
+}
+
+/*
+	The filter/search section
+*/
+
+#filter_search {
+	margin: 10px;
+}
+
+.filter_search_form {
+	font-family: Gill Sans, Verdana;
+	display:inline-block;
+}
+.filter_search_text {
+	margin:4px;
+	font-family: Gill Sans, Verdana;
+	word-wrap: normal;
+	max-width:400px;
+}
+
+/*
+	Photos section
+
+	Add the following to see borders:
+		border: 1px solid black;
+*/
+
+.photo {
+	margin:10px;
+	padding:5px;
+	width:450px;
+	display:inline-block;
+	vertical-align:top;
+}
+.photo_title {
+	font-family: Gill Sans, Verdana;
+}
+.photo_header {
+	
+}
+.photo_date {
+	font-family: Gill Sans, Verdana;
+}
+.photo_click {
+	margin:-2px;
+	padding:0px;
+	float: right;
+}
+.photo_image {
+	margin: 5px 0px 5px 0px;
+}
+.photo_description {
+	font-family: Gill Sans, Verdana;
+	padding:5px 0px 0px 0px;
+}
+.photo_categories {
+	padding:10px 0px 10px 0px;
+}
+.photo_category {
+	/* Alternate between:
+		186,143,149
+		202,182,205
+	 */
+	background-color: rgb(186,143,149);
+	border: 1px solid rgb(186,143,149);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding:4px;
+	margin: 0px 4px 4px 0px;
+	float:left;
+
+	font-family: Gill Sans, Verdana;
+}
+.photo_category:nth-of-type(odd) {
+    background-color: rgb(202,182,205);
+	border: 1px solid rgb(202,182,205);
+}
