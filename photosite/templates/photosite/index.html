@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block header %}    
+<h1>My photos</h1>
+<hr/> 
+{% endblock header %}
+
+{% block navigation %}
+<div id="filter_search">
+    <div class="filter_search_form">
+        <form action="{% url 'photosite:cat_filter' %}" method="get">
+            {{category_list}}
+        </form>
+    </div>
+    <div class="filter_search_form">or</div>
+    <div class="filter_search_form">
+        <form action="{% url 'photosite:photo_search' %}" method="get">
+            <input id="search" name="search_term" type="text" placeholder="type search here and">
+            <input id="submit" type="submit" value="Search">
+        </form>
+    </div>
+    <div class="filter_search_text">
+        {% if searched_for %}
+        Search results for '{{ searched_for }}'
+        {% endif %}
+    </div>
+</div>
+<hr/>
+{% endblock navigation %}
+
+{% block content %}
+    {% if photo_list %}
+        {% for photo in photo_list %}
+        <div class="photo">
+            <h2 class="photo_title">{{ photo.photo_title }}</h2>
+            <div class="photo_header">
+                <span class="photo_date">
+                    {{ photo.photo_date }}
+                </span>
+                <span class="photo_click">
+                    <button class="full_size_click" onClick="window.open('{{ photo.photo_full.url }}');">Open full size</button>
+                </span>
+            </div>
+        	<div class="photo_image"><img src="{{ photo.photo_small.url }}" alt="{{photo.photo_title}}"/></div>
+        	<div class="photo_description">{{ photo.photo_description }}</div>
+        	<div class="photo_categories">
+                {% for category in photo.category.all %}
+        		<span class="photo_category">{{ category }}</span>
+        	   {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No photos match the chosen criteria.</p>
+    {% endif %}
+<hr/>  
+{% endblock content %}
+
+{% block footer %}  
+A copyright message.
+{% endblock footer %}
