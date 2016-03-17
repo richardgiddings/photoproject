@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5(-37bt*9(0k)4ednf550syni_lpcpa@rfnbie2h0+s0n+xc5l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if socket.gethostname() == 'richard-giddingss-macbook-pro.local':
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -76,7 +80,8 @@ WSGI_APPLICATION = 'photoproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
+if DEBUG:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'photosite',
@@ -84,8 +89,19 @@ DATABASES = {
         'PASSWORD':'testing',
         'HOST':'127.0.0.1',
         'PORT':'5432',
+        }
     }
-}
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'photosite',
+        'USER':'admin_account',
+        'PASSWORD':'testing',
+        'HOST':'',
+        'PORT':'',
+        }
+    }
 
 
 # Password validation
@@ -127,5 +143,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Media directory for photos and their thumbnails
-MEDIA_ROOT = '/Users/richardgiddings/django/code/photoproject/photosite/media/'
+if DEBUG:
+    MEDIA_ROOT = '/Users/richardgiddings/django/code/photoproject/photosite/media/'
+else:
+    MEDIA_ROOT = '/home/giddingsr/webapps/media/'
+
 MEDIA_URL = 'media/'
