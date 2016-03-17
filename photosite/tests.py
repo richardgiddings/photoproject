@@ -36,7 +36,7 @@ class PhotoViewTests(TransactionTestCase):
 
     def test_index_view_with_photo_and_categories(self):
         """
-    	Test a Photo with categories assigned to it
+    	Test a photo with categories assigned to it
         """
         category1 = create_category("Category 1")
         category2 = create_category("Category 2")
@@ -51,7 +51,7 @@ class PhotoViewTests(TransactionTestCase):
 
     def test_index_view_with_two_photos_and_categories(self):
         """
-        Test a Photo with categories assigned to it
+        Test photos with categories assigned to them
         """
         category1 = create_category("Category 1")
         category2 = create_category("Category 2")
