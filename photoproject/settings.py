@@ -142,7 +142,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 if not DEBUG:
-    STATIC_ROOT = '/home/giddingsr/webapps/static/'
+    STATIC_ROOT = '/home/giddingsr/webapps/static_media/'
 
 # Media directory for photos and their thumbnails
 if DEBUG:
