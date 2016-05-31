@@ -7,4 +7,8 @@ Currently requires:
 - Django imagekit 
     https://django-imagekit.readthedocs.io/en/latest/
 
-- A (Postgres) database to hold the images. 
+- A (Postgres) database to hold the images.
+
+The application can be seen at:
+
+http://giddingsr.webfactional.com/photosite/
