@@ -95,11 +95,14 @@ hr {
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	padding:4px;
+	padding:6px;
 	margin: 0px 4px 4px 0px;
 	float:left;
 
 	font-family: Gill Sans, Verdana;
+	font-size: 16px;
+
+	cursor: pointer;
 }
 .photo_category:nth-of-type(odd) {
     background-color: rgb(202,182,205);

@@ -44,9 +44,11 @@
         	<div class="photo_image"><img src="{{ photo.photo_small.url }}" alt="{{photo.photo_title}}"/></div>
         	<div class="photo_description">{{ photo.photo_description }}</div>
         	<div class="photo_categories">
+                <form action="{% url 'photosite:cat_filter' %}"  method="get">
                 {% for category in photo.category.all %}
-        		<span class="photo_category">{{ category }}</span>
-        	   {% endfor %}
+                    <button type="submit" name="category_id" value="{{ category.id }}" class="photo_category">{{ category }}</button>
+            	{% endfor %}
+                </form>  
             </div>
         </div>
         {% endfor %}

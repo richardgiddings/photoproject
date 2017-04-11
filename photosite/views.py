@@ -23,8 +23,12 @@ def cat_filter(request):
     Filter the photos by category.
     'All categories' has a category_id of ''.
     """
+    category_id = request.GET.get('category_id') # tag clicked
+    if not category_id: # dropdown
+        category_id = request.GET.get('category_list')
+    if not category_id.isdigit():
+        category_id = ''
 
-    category_id = request.GET.get('category_list')
     if category_id == '':
     	photo_list = Photo.objects.order_by('-photo_date')
     else:
@@ -32,7 +36,7 @@ def cat_filter(request):
         photo_list = photo_list.filter(category=category_id)
 
     # make sure the selected category is shown
-    category_list = CategorySelectionForm(request.GET)	
+    category_list = CategorySelectionForm(initial={'category_list': category_id})	
 
     return render_to_response("photosite/index.html", { 
             "category_list": category_list, 
