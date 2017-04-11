@@ -101,7 +101,28 @@ class PhotoViewTests(TransactionTestCase):
 
         response = self.client.get(reverse('photosite:cat_filter'), {'category_list': '2'})
         self.assertEqual(response.status_code, 200)
-        self.assertQuerysetEqual(response.context['photo_list'],['<Photo: Title 3>', '<Photo: Title 2>'])     
+        self.assertQuerysetEqual(response.context['photo_list'],['<Photo: Title 3>', '<Photo: Title 2>']) 
+
+    def test_cat_filter_with_a_filter_using_tag(self):
+        """
+        Test a category filter that narrows down the results. This test simulates
+        clicking one of the category tags.
+        """
+        category1 = create_category("Category 1")
+        category2 = create_category("Category 2")
+        photo1 = create_photo("Title 1", "Description One", "test1.jpg")
+        photo2 = create_photo("Title 2", "Description Two", "test2.jpg")
+        photo3 = create_photo("Title 3", "Description One", "test3.jpg")
+        photo1.category.add(category1)
+        photo2.category.add(category2)
+        photo3.category.add(category2)
+        photo1.save
+        photo2.save
+        photo3.save
+
+        response = self.client.get(reverse('photosite:cat_filter'), {'category_id': '2'})
+        self.assertEqual(response.status_code, 200)
+        self.assertQuerysetEqual(response.context['photo_list'],['<Photo: Title 3>', '<Photo: Title 2>'])      
 
     def test_photo_search_no_results(self):
         """
