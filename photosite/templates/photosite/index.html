@@ -16,7 +16,7 @@
     <div class="filter_search_form">
         <form action="{% url 'photosite:photo_search' %}" method="get">
             <input id="search" name="search_term" type="text" placeholder="type search here and">
-            <input id="submit" type="submit" value="Search">
+            <input id="submit" type="submit" value="SEARCH">
         </form>
     </div>
     <div class="filter_search_text">
@@ -32,16 +32,15 @@
     {% if photo_list %}
         {% for photo in photo_list %}
         <div class="photo">
-            <h2 class="photo_title">{{ photo.photo_title }}</h2>
-            <div class="photo_header">
-                <span class="photo_date">
+            <h2>{{ photo.photo_title }}</h2>
+            <div>
+                <span>
                     {{ photo.photo_date }}
                 </span>
-                <span class="photo_click">
-                    <button class="full_size_click" onClick="window.open('{{ photo.photo_full.url }}');">Open full size</button>
-                </span>
             </div>
-        	<div class="photo_image"><img src="{{ photo.photo_small.url }}" alt="{{photo.photo_title}}"/></div>
+        	<div class="photo_image">
+                <img src="{{ photo.photo_small.url }}" alt="{{photo.photo_title}}" onclick="window.open('{{ photo.photo_full.url }}');" />
+            </div>
         	<div class="photo_description">{{ photo.photo_description }}</div>
         	<div class="photo_categories">
                 <form action="{% url 'photosite:cat_filter' %}"  method="get">
